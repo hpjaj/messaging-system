@@ -28,7 +28,13 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (5.1.7)
+      execjs
+      json
     bcrypt (3.1.7)
+    bootstrap-sass (3.3.3)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
     builder (3.2.2)
     capybara (2.3.0)
       mime-types (>= 1.16)
@@ -52,6 +58,9 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.4.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.11)
@@ -148,9 +157,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass (~> 3.3.3)
   capybara
   coffee-rails (~> 4.0.0)
   devise
+  figaro
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.1.8)

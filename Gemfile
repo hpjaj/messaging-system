@@ -33,3 +33,6 @@ group :test do
 end
 
 gem 'devise'
+gem 'figaro'
+gem 'bootstrap-sass', '~> 3.3.3'
+
