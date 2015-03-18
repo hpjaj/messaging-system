@@ -1,0 +1,27 @@
+<div class="container form" id="message-form">
+  <% if @message.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @message.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= form_for @message, url: {action: "create"} do |f| %>
+    <div class="form-group">
+      <p><%= f.collection_select(:recipient_id, User.where.not(id: current_user).order(:name), :id, :name , {include_blank: 'To'}, {class: 'form-control'}) %></p>
+    </div>
+
+    <div class="form-group">
+      <p><%= f.text_area :body, placeholder: "Body formatted with markdown", rows: 19, class: 'form-control' %></p>
+    </div>
+
+    <div class="form-group">
+      <%= link_to "Cancel", :back, class: 'btn btn-primary' %> 
+      <span class="pull-right"><%= f.submit "Send", class: 'btn btn-success' %> </span>
+    </div>
+  <% end %>
+</div>
+

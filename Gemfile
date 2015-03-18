@@ -30,9 +30,12 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda-matchers', require: false
+  gem 'factory_girl_rails'
+  gem 'launchy'
 end
 
 gem 'devise'
 gem 'figaro'
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'faker'
 
