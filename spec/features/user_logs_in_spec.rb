@@ -11,5 +11,6 @@ describe 'User logs in' do
     click_button 'Sign in'
     expect( current_path ).to eq root_path
     expect( page ).to have_content(@user.name)
+    expect( page ).to have_content('Signed in successfully.')
   end
 end

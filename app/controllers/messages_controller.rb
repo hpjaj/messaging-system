@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user = current_user
     if @message.save
+      MessageMailer.new_message_email(@message).deliver
       redirect_to root_path, notice: "Message sent"
     else
       render :new
