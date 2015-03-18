@@ -6,8 +6,8 @@ describe 'A new message'  do
   Warden.test_mode!
 
   before do
-    user = create(:user)
-    user_2 = create(:user, name: 'Alex')
+    user = create_user('John')
+    user_2 = create_user('Alex')
     login_as(user, scope: :user)
     visit root_path
     expect( current_path ).to eq root_path

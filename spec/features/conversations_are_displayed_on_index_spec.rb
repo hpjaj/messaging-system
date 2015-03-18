@@ -6,10 +6,10 @@ describe 'Conversations'  do
   Warden.test_mode!
 
   before do
-    user_1 = create(:user, name: 'John')
-    user_2 = create(:user, name: 'Alex')
-    user_3 = create(:user, name: 'Sam')
-    user_4 = create(:user, name: 'Susan')
+    user_1 = create_user('John')
+    user_2 = create_user('Alex')
+    user_3 = create_user('Sam')
+    user_4 = create_user('Susan')
     message_1 = create_message(user_1.id, user_2.id)
     message_2 = create_message(user_1.id, user_3.id)
     message_3 = create_message(user_1.id, user_4.id)
