@@ -42,4 +42,22 @@ describe 'Conversations'  do
     expect( page ).to have_content("Third message")
   end
 
+  it "increase in total message count by one everytime a message is sent" do
+    expect( @conversation_1.total_message_count).to eq(0)
+    
+    create_and_send_message
+    @conversation_1.reload
+    recipient_conversation = Conversation.find_by(user_id: @user_2.id, recipient_id: @user_1.id)
+    recipient_conversation.reload
+    expect( @conversation_1.total_message_count).to eq(1)
+    expect( recipient_conversation.total_message_count).to eq(1)
+
+    create_and_send_message
+    @conversation_1.reload
+    recipient_conversation.reload
+    expect( @conversation_1.total_message_count).to eq(2)
+    expect( recipient_conversation.total_message_count).to eq(2)
+  end
+
+
 end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :conversations, only: [:index, :create, :show, :destroy]
 
-  resources :welcome, only: [:index]
+  get 'welcome' => 'welcome#index'
 
   root 'conversations#index'
 

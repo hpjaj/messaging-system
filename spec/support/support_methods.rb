@@ -19,6 +19,13 @@ def create_user(name)
   return user
 end
 
+def create_and_send_message
+  click_link 'Create A Message'
+  select('Alex', :from => 'message[recipient_id]')
+  fill_in 'Body formatted with markdown', with: 'Lorem ipsum'
+  click_button 'Send'
+end
+
 
 
 

@@ -43,7 +43,7 @@ users = User.all
 end
 
 100.times do 
-  message_strings = Conversation.create!(
+  conversations = Conversation.create!(
     user_id:   users.sample.id,
     recipient_id: users.sample.id
   )

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'User logs in' do
   it 'Successfully' do
     user = create_user('John')
-    visit welcome_index_path
+    visit welcome_path
     click_link 'Log In'
     expect( current_path ).to eq new_user_session_path
     fill_in 'Email', with: user.email

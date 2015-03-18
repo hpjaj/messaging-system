@@ -6,8 +6,9 @@ describe 'A new message'  do
   Warden.test_mode!
 
   before do
+    ActionMailer::Base.deliveries = []
     user = create_user('John')
-    user_2 = create_user('Alex')
+    recipient = create_user('Alex')
     login_as(user, scope: :user)
     visit root_path
     expect( current_path ).to eq root_path
@@ -22,15 +23,6 @@ describe 'A new message'  do
     create_and_send_message
     email_body = ActionMailer::Base.deliveries.last.body.encoded
     expect( email_body ).to have_content("Lorem ipsum")
-    ActionMailer::Base.deliveries = []
-  end
-
-
-  def create_and_send_message
-    click_link 'Create A Message'
-    select('Alex', :from => 'message[recipient_id]')
-    fill_in 'Body formatted with markdown', with: 'Lorem ipsum'
-    click_button 'Send'
   end
 
 end

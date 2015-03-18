@@ -1,7 +1,9 @@
 class MessagesController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def new
     @message = Message.new
+    @potential_recipients = User.where.not(id: current_user).order(:name)
   end
 
   def create
@@ -37,11 +39,11 @@ class MessagesController < ApplicationController
 private
 
   def message_params
-    params.require(:message).permit(:body, :recipient_id, :user_id)
+    params.require(:message).permit(:body, :recipient_id)
   end
 
   def create_conversation(sender, receiver_id)
-    conversation = sender.conversations.build(:recipient_id => receiver_id)
+    conversation = sender.conversations.build(recipient_id: receiver_id)
     conversation.save!
   end
 
