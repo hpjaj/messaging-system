@@ -1,3 +1,19 @@
 // Place all the styles related to the Conversations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.string-header {
+  padding-bottom: 40px;
+}
+.string-subject {
+  color: #7b7b80;
+}
+
+.string-name {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.string-delete {
+  font-size: 12px;
+}

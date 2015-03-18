@@ -5,21 +5,27 @@ class MessagesController < ApplicationController
   end
 
   def create
+    ## assign local and instance variables
     @message = Message.new(message_params)
     @message.user = current_user
-    user_is_sender_conversation = Conversation.find_conversation(current_user, params[:message][:recipient_id])
-    user_is_receiver_conversation = Conversation.find_conversation(params[:message][:recipient_id], current_user)
+    recipient_id = params[:message][:recipient_id]
+    user_is_sender_in_conversation = Conversation.find_conversation(current_user, recipient_id)
+    user_is_receiver_in_conversation = Conversation.find_conversation(recipient_id, current_user)
+
     if @message.save
-      if user_is_sender_conversation == nil
-        create_conversation(current_user, params[:message][:recipient_id])
+      ## check for existing Conversations, if nil, create one/both
+      if user_is_sender_in_conversation == nil
+        create_conversation(current_user, recipient_id)
+      end
+      
+      if user_is_receiver_in_conversation == nil
+        create_conversation(User.find_by(id: recipient_id), current_user.id)
       end
 
-      if user_is_receiver_conversation == nil
-        create_conversation(User.find_by(id: params[:message][:recipient_id]), current_user.id)
-      end
-
-      add_one_to_conversations_message_count(current_user, params[:message][:recipient_id])
-      add_one_to_conversations_message_count(params[:message][:recipient_id], current_user)
+      ## Increasing a conversation's message count updates the 
+      ## conversation's updated_at field --> Used for sorting conversations
+      add_one_to_conversations_message_count(current_user, recipient_id)
+      add_one_to_conversations_message_count(recipient_id, current_user)
 
       MessageMailer.new_message_email(@message).deliver
       redirect_to root_path, notice: "Message sent"
