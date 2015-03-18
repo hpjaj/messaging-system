@@ -9,7 +9,8 @@
         <%= link_to conversation.recipient.name, conversation %>
         <span class="pull-right string-delete"><%= link_to "Delete", conversation, data: { confirm: "Delete this message string?" }, method: :delete %></span>
       </p>
-      <p class="string-subject"><%= truncate Message.where(recipient_id: conversation.recipient_id).last.body, length: 100 %></p> 
+      <p class="string-subject"><%= truncate Message.where(recipient_id: conversation.recipient_id).last.body, length: 100 %></p>
+      <!-- I find the most recent message's subject to display by finding the a message between the two users that was updated at the exact same time as the conversation was updated.  Perhaps a method in message.rb   -->
     </div>
     <%= content_tag :hr unless index == ( @conversations.length - 1 ) %>
   <% end %>
