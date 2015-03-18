@@ -1,2 +1,16 @@
-<h1>Conversations#index</h1>
-<p>Find me in app/views/conversations/index.html.erb</p>
+<h2 class="string-header">Conversations</h2>
+
+<% if @conversations.blank? %>
+  <p>You have no current conversations.  <%= link_to 'Create one now!', new_message_path %></p>
+<% else %>
+  <% @conversations.order('updated_at DESC').each_with_index do |conversation, index| %>
+    <div class="string-div">
+      <p class="string-name">
+        <%= link_to conversation.recipient.name, conversation %>
+        <span class="pull-right string-delete"><%= link_to "Delete", conversation, data: { confirm: "Delete this message string?" }, method: :delete %></span>
+      </p>
+      <p class="string-subject"><%= truncate Message.where(recipient_id: conversation.recipient_id).last.body, length: 100 %></p> 
+    </div>
+    <%= content_tag :hr unless index == ( @conversations.length - 1 ) %>
+  <% end %>
+<% end %>
