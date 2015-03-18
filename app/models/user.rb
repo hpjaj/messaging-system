@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :conversations
   has_many :recipients, :through => :conversations
+
+  validates :name, presence: true
+  
 end

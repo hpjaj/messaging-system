@@ -38,4 +38,5 @@ gem 'devise'
 gem 'figaro'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'faker'
-
+gem 'redcarpet'
+gem 'pygments.rb'

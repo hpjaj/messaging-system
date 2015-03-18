@@ -2,6 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Message, :type => :model do
 
+  describe "associations" do
+
+    it "belongs to user" do
+      expect(Message.new).to belong_to(:user)
+    end 
+
+  end
+
   describe "validations" do
 
     it "validates the presence of a recipient_id" do

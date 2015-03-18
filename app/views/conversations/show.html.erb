@@ -1,2 +1,11 @@
-<h1>Conversations#show</h1>
-<p>Find me in app/views/conversations/show.html.erb</p>
+<div class="container message-show">
+  <% @messages.each do |message| %>
+    <div class="message-block">
+      <p class="message-from"><span class="message-sender"><%= sender_of(message) %></span> said
+        <span class="pull-right"><%= distance_of_time_in_words_to_now(message.created_at) %> ago</span>
+      </p>
+      <p class="message-body"><%= markdown message.body %></p>
+    </div>
+    <br>
+  <% end %>
+</div>

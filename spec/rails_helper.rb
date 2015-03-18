@@ -6,6 +6,8 @@ require 'rspec/rails'
 require 'shoulda/matchers'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'support/support_methods'
+
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -34,6 +36,7 @@ RSpec.configure do |config|
 
   # Make Factory Girl's methods available
   config.include FactoryGirl::Syntax::Methods
+
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
