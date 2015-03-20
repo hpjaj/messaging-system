@@ -2,7 +2,7 @@
 
 Messenger is a traditional email-like messaging system between users.
 
-To test drive Messenger:
+To test drive Messenger visit https://messenger-system.herokuapp.com/ or:
 
 - Git [clone](https://github.com/hpjaj/messaging-system.git) the repository
 - Run `$ bundle`
