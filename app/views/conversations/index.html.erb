@@ -9,7 +9,7 @@
         <%= link_to conversation.recipient.name, conversation %>
         <span class="pull-right string-delete"><%= link_to "Delete", conversation, data: { confirm: "Delete this message string?" }, method: :delete %></span>
       </p>
-      <p class="string-subject"><%= truncate latest_message(conversation).body, length: 100 %></p>
+      <p class="string-subject"><%= truncate latest_message(conversation).try(:body), length: 100 %></p>
     </div>
     <%= content_tag :hr unless index == ( @conversations.length - 1 ) %>
   <% end %>
