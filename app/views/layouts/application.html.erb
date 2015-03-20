@@ -10,7 +10,11 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs">
-      <li><%= link_to "Messenger", root_path %></li>
+      <% if current_user %>
+        <%= content_tag :li, link_to('Messenger', conversations_path) %>
+      <% else %>
+        <%= content_tag :li, link_to('Messenger', root_path) %>
+      <% end %>
       <li><%= link_to "Create A Message", new_message_path %></li>
       
       <div class="pull-right user-info" id="sign-in" >

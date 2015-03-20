@@ -9,7 +9,7 @@ describe 'User logs in' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Sign in'
-    expect( current_path ).to eq root_path
+    expect( current_path ).to eq conversations_path
     expect( page ).to have_content(user.name)
     expect( page ).to have_content('Signed in successfully.')
   end

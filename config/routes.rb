@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   get 'welcome' => 'welcome#index'
 
-  root 'conversations#index'
+  root 'welcome#index'
 
 end

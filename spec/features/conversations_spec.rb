@@ -16,7 +16,7 @@ describe 'Conversations'  do
     @conversation_1 = create_conversation(@user_1.id, @user_2.id)
     conversation_2 = create_conversation(@user_1.id, user_3.id)
     login_as(@user_1, scope: :user)
-    visit root_path
+    visit conversations_path
   end
 
   it 'are displayed on a users conversation index page' do
