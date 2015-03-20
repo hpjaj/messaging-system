@@ -1,7 +1,5 @@
 class MessageMailer < ActionMailer::Base
   
-  include SendGrid
-
   def new_message_email(new_message_content)
     @new_message_content = new_message_content
     sender = User.find(new_message_content.user_id)
